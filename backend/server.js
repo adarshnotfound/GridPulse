@@ -26,3 +26,13 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
 });
+
+require('dotenv').config(); // 1. Load the secret file
+
+const mongoURI = process.env.MONGO_URI; // 2. Read the key
+
+// 3. Connect (Uncomment this part in your server.js now)
+mongoose.connect(mongoURI)
+  .then(() => console.log("MongoDB Connected Successfully"))
+  .catch(err => console.log("MongoDB Connection Error:", err));
+  
